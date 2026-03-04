@@ -1,0 +1,128 @@
+{
+  "categories": [
+    {
+      "id": "kahvaltilik",
+      "title": "Kahvaltılık",
+      "icon": "restaurant-outline",
+      "products": [
+        {
+          "id": "kahvalti-1",
+          "name": "Avokado Tost",
+          "description": "Ekşi mayalı ekmek, avokado ezmesi, nar ekşisi, çörek otu.",
+          "price": "₺210",
+          "image": "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=900&q=80",
+          "link": "/product/kahvalti-1"
+        },
+        {
+          "id": "kahvalti-2",
+          "name": "Granola Bowl",
+          "description": "Ev yapımı granola, yoğurt, mevsim meyveleri, bal.",
+          "price": "₺175",
+          "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80",
+          "link": "/product/kahvalti-2"
+        },
+        {
+          "id": "kahvalti-3",
+          "name": "French Toast",
+          "description": "Tarçınlı brioche, meyve dilimleri ve akçaağaç şurubu.",
+          "price": "₺195",
+          "image": "https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=900&q=80",
+          "link": "/product/kahvalti-3"
+        }
+      ]
+    },
+    {
+      "id": "tatli",
+      "title": "Tatlı",
+      "icon": "ice-cream-outline",
+      "products": [
+        {
+          "id": "tatli-1",
+          "name": "San Sebastian",
+          "description": "Karamelize üst katmanlı, yoğun krem peynirli cheesecake.",
+          "price": "₺180",
+          "image": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=900&q=80",
+          "link": "/product/tatli-1"
+        },
+        {
+          "id": "tatli-2",
+          "name": "Brownie",
+          "description": "Belçika çikolatalı, hafif akışkan merkezli brownie.",
+          "price": "₺140",
+          "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=80",
+          "link": "/product/tatli-2"
+        },
+        {
+          "id": "tatli-3",
+          "name": "Limonlu Tart",
+          "description": "Tereyağlı taban, limon kreması, beze dokunuşu.",
+          "price": "₺155",
+          "image": "https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?auto=format&fit=crop&w=900&q=80",
+          "link": "/product/tatli-3"
+        }
+      ]
+    },
+    {
+      "id": "soguk",
+      "title": "Soğuk İçecek",
+      "icon": "snow-outline",
+      "products": [
+        {
+          "id": "soguk-1",
+          "name": "Iced Americano",
+          "description": "Çift shot espresso, filtrelenmiş su ve buz.",
+          "price": "₺120",
+          "image": "https://images.unsplash.com/photo-1517701550927-30cf4ba1f88a?auto=format&fit=crop&w=900&q=80",
+          "link": "/product/soguk-1"
+        },
+        {
+          "id": "soguk-2",
+          "name": "Cold Brew",
+          "description": "16 saat demleme, düşük asidite, yoğun aroma.",
+          "price": "₺135",
+          "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80",
+          "link": "/product/soguk-2"
+        },
+        {
+          "id": "soguk-3",
+          "name": "Limonata",
+          "description": "Taze limon suyu, nane ve hafif şeker dengesi.",
+          "price": "₺115",
+          "image": "https://images.unsplash.com/photo-1523371054106-bbf80586c38c?auto=format&fit=crop&w=900&q=80",
+          "link": "/product/soguk-3"
+        }
+      ]
+    },
+    {
+      "id": "sicak",
+      "title": "Sıcak İçecek",
+      "icon": "cafe-outline",
+      "products": [
+        {
+          "id": "sicak-1",
+          "name": "Flat White",
+          "description": "Double ristretto ve ince mikroköpük süt.",
+          "price": "₺130",
+          "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80",
+          "link": "/product/sicak-1"
+        },
+        {
+          "id": "sicak-2",
+          "name": "Filtre Kahve",
+          "description": "Günlük öğütüm, dengeli gövde ve temiz bitiş.",
+          "price": "₺110",
+          "image": "https://images.unsplash.com/photo-1494314671902-399b18174975?auto=format&fit=crop&w=900&q=80",
+          "link": "/product/sicak-2"
+        },
+        {
+          "id": "sicak-3",
+          "name": "Bitki Çayı",
+          "description": "Ihlamur, papatya ve melisa karışımı.",
+          "price": "₺105",
+          "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80",
+          "link": "/product/sicak-3"
+        }
+      ]
+    }
+  ]
+}
