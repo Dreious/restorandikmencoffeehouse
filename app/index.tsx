@@ -1,4 +1,3 @@
-import { Ionicons } from '@expo/vector-icons';
 import { Href, useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
 import { Image, ImageStyle, Platform, Pressable, ScrollView, StyleProp, StyleSheet, Text, TextInput, useWindowDimensions, View } from 'react-native';
@@ -6,7 +5,7 @@ import { Image, ImageStyle, Platform, Pressable, ScrollView, StyleProp, StyleShe
 type Category = {
   id: string;
   title: string;
-  icon: keyof typeof Ionicons.glyphMap;
+  icon: string;
   products: Product[];
 };
 
@@ -40,20 +39,26 @@ function ProductImage({ image, style }: { image: string; style: StyleProp<ImageS
 }
 
 // Wrapper component for Ionicons to fix rendering issues on certain devices
-function IconButton({
-  name,
-  size,
-  color,
-  ...props
-}: React.ComponentProps<typeof Ionicons>) {
+function resolveIcon(name: string) {
+  const icons: Record<string, string> = {
+    'search-outline': '🔍',
+    'restaurant-outline': '🍽',
+    'cafe-outline': '☕',
+    'sparkles-outline': '✨',
+    'add-circle-outline': '⊕',
+    'snow-outline': '❄',
+    'leaf-outline': '🍃',
+    'flame-outline': '🔥',
+    'chevron-up': '▴',
+    'chevron-down': '▾',
+  };
+  return icons[name] ?? '•';
+}
+
+function IconButton({ name, size = 16, color = '#0f646c' }: { name: string; size?: number; color?: string }) {
   return (
     <View style={styles.iconWrapper}>
-      <Ionicons
-        name={name}
-        size={size}
-        color={color}
-        {...props}
-      />
+      <Text style={[styles.iconText, { fontSize: size, color }]}>{resolveIcon(name)}</Text>
     </View>
   );
 }
@@ -233,21 +238,7 @@ export default function CoffeeHouseScreen() {
             );
           })}
 
-          {!isDesktopWeb && <View style={styles.bottomSpacing} />}
         </ScrollView>
-
-        {!isDesktopWeb && (
-          <View style={styles.bottomNav}>
-            <Pressable style={styles.bottomItem} onPress={() => router.push('/')}>
-              <IconButton name="reader" size={20} color="#0f646c" />
-              <Text style={styles.bottomItemText}>Menü</Text>
-            </Pressable>
-            <Pressable style={styles.bottomItem} onPress={() => router.push('/contact')}>
-              <IconButton name="call" size={20} color="#0f646c" />
-              <Text style={styles.bottomItemText}>İletişim</Text>
-            </Pressable>
-          </View>
-        )}
       </View>
     </View>
   );
@@ -259,6 +250,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: 24,
     height: 24,
+  },
+  iconText: {
+    fontWeight: '700',
+    textAlign: 'center',
+    includeFontPadding: false,
   },
   page: {
     flex: 1,
@@ -485,27 +481,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '800',
     paddingTop: 2,
-  },
-  bottomSpacing: {
-    height: 18,
-  },
-  bottomNav: {
-    height: 68,
-    borderTopWidth: 1,
-    borderTopColor: '#d6ecef',
-    backgroundColor: '#fff',
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-  },
-  bottomItem: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 2,
-  },
-  bottomItemText: {
-    color: '#0f646c',
-    fontSize: 12,
-    fontWeight: '700',
   },
 });

@@ -1,4 +1,3 @@
-import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Image, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useState } from 'react';
@@ -15,7 +14,7 @@ type Product = {
 type Category = {
   id: string;
   title: string;
-  icon: keyof typeof Ionicons.glyphMap;
+  icon: string;
   products: Product[];
 };
 
@@ -47,7 +46,7 @@ export default function ProductDetailScreen() {
       <View style={styles.page}>
         <View style={styles.header}>
           <Pressable style={styles.backBtn} onPress={() => router.back()}>
-            <Ionicons name="chevron-back" size={22} color="#fff" />
+            <Text style={styles.backIcon}>‹</Text>
           </Pressable>
           <Text style={styles.headerTitle}>Ürün Bulunamadı</Text>
           <View style={styles.backBtn} />
@@ -66,7 +65,7 @@ export default function ProductDetailScreen() {
     <View style={styles.page}>
       <View style={styles.header}>
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
-          <Ionicons name="chevron-back" size={22} color="#fff" />
+          <Text style={styles.backIcon}>‹</Text>
         </Pressable>
         <Text style={styles.headerTitle}>{product.name}</Text>
         <View style={styles.backBtn} />
@@ -110,6 +109,12 @@ const styles = StyleSheet.create({
     borderRadius: 17,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  backIcon: {
+    color: '#fff',
+    fontSize: 26,
+    fontWeight: '700',
+    lineHeight: 26,
   },
   headerTitle: {
     color: '#fff',
