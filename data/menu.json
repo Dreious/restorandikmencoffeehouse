@@ -1,126 +1,715 @@
 {
   "categories": [
     {
-      "id": "kahvaltilik",
-      "title": "Kahvaltılık",
+      "id": "yiyecekler",
+      "title": "Yiyecekler",
       "icon": "restaurant-outline",
       "products": [
         {
-          "id": "kahvalti-1",
-          "name": "Avokado Tost",
-          "description": "Ekşi mayalı ekmek, avokado ezmesi, nar ekşisi, çörek otu.",
-          "price": "₺210",
-          "image": "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=900&q=80",
-          "link": "/product/kahvalti-1"
-        },
-        {
-          "id": "kahvalti-2",
-          "name": "Granola Bowl",
-          "description": "Ev yapımı granola, yoğurt, mevsim meyveleri, bal.",
-          "price": "₺175",
-          "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80",
-          "link": "/product/kahvalti-2"
-        },
-        {
-          "id": "kahvalti-3",
-          "name": "French Toast",
-          "description": "Tarçınlı brioche, meyve dilimleri ve akçaağaç şurubu.",
-          "price": "₺195",
-          "image": "https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=900&q=80",
-          "link": "/product/kahvalti-3"
-        }
-      ]
-    },
-    {
-      "id": "tatli",
-      "title": "Tatlı",
-      "icon": "ice-cream-outline",
-      "products": [
-        {
-          "id": "tatli-1",
-          "name": "San Sebastian",
-          "description": "Karamelize üst katmanlı, yoğun krem peynirli cheesecake.",
+          "id": "yiyecek-1",
+          "name": "Zeytin Ezme Peynir",
+          "description": "Zeytin ezmeli ve peynirli sandvic.",
           "price": "₺180",
-          "image": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=900&q=80",
-          "link": "/product/tatli-1"
+          "image": "/images/yiyecek-1.jpeg",
+          "link": "/product/yiyecek-1"
         },
         {
-          "id": "tatli-2",
-          "name": "Brownie",
-          "description": "Belçika çikolatalı, hafif akışkan merkezli brownie.",
+          "id": "yiyecek-2",
+          "name": "Uc Peynirli",
+          "description": "Uc peynirli sandvic.",
+          "price": "₺180",
+          "image": "/images/yiyecek-2.jpeg",
+          "link": "/product/yiyecek-2"
+        },
+        {
+          "id": "yiyecek-3",
+          "name": "Lotus Cheesecake",
+          "description": "Lotus biskuvi tabanli cheesecake.",
+          "price": "₺160",
+          "image": "/images/yiyecek-3.jpeg",
+          "link": "/product/yiyecek-3"
+        },
+        {
+          "id": "yiyecek-4",
+          "name": "Nutella",
+          "description": "Nutella soslu tatli.",
+          "price": "₺160",
+          "image": "/images/yiyecek-4.jpeg",
+          "link": "/product/yiyecek-4"
+        },
+        {
+          "id": "yiyecek-5",
+          "name": "Snicers Pasta",
+          "description": "Cikolatali Snicers pasta dilimi.",
+          "price": "₺160",
+          "image": "/images/yiyecek-5.jpeg",
+          "link": "/product/yiyecek-5"
+        },
+        {
+          "id": "yiyecek-6",
+          "name": "Latte Pasta",
+          "description": "Latte kremali pasta dilimi.",
+          "price": "₺160",
+          "image": "/images/yiyecek-6.jpeg",
+          "link": "/product/yiyecek-6"
+        },
+        {
+          "id": "yiyecek-7",
+          "name": "Marlenka",
+          "description": "Kat kat kremali Marlenka.",
+          "price": "₺160",
+          "image": "/images/yiyecek-7.jpeg",
+          "link": "/product/yiyecek-7"
+        },
+        {
+          "id": "yiyecek-8",
+          "name": "Cookie",
+          "description": "Damla cikolatali cookie.",
+          "price": "₺100",
+          "image": "/images/yiyecek-8.jpeg",
+          "link": "/product/yiyecek-8"
+        },
+        {
+          "id": "yiyecek-9",
+          "name": "Orman Meyveli Pasta",
+          "description": "Orman meyveli pasta dilimi.",
+          "price": "₺160",
+          "image": "/images/yiyecek-9.jpeg",
+          "link": "/product/yiyecek-9"
+        },
+        {
+          "id": "yiyecek-10",
+          "name": "Tiramisu",
+          "description": "Kahveli mascarpone kremali tiramisu.",
           "price": "₺140",
-          "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=80",
-          "link": "/product/tatli-2"
+          "image": "/images/yiyecek-10.jpeg",
+          "link": "/product/yiyecek-10"
         },
         {
-          "id": "tatli-3",
-          "name": "Limonlu Tart",
-          "description": "Tereyağlı taban, limon kreması, beze dokunuşu.",
-          "price": "₺155",
-          "image": "https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?auto=format&fit=crop&w=900&q=80",
-          "link": "/product/tatli-3"
+          "id": "yiyecek-11",
+          "name": "Magnolya",
+          "description": "Kavanozda magnolya tatlisi.",
+          "price": "₺140",
+          "image": "/images/yiyecek-11.jpeg",
+          "link": "/product/yiyecek-11"
         }
       ]
     },
     {
-      "id": "soguk",
-      "title": "Soğuk İçecek",
-      "icon": "snow-outline",
-      "products": [
-        {
-          "id": "soguk-1",
-          "name": "Iced Americano",
-          "description": "Çift shot espresso, filtrelenmiş su ve buz.",
-          "price": "₺120",
-          "image": "https://images.unsplash.com/photo-1517701550927-30cf4ba1f88a?auto=format&fit=crop&w=900&q=80",
-          "link": "/product/soguk-1"
-        },
-        {
-          "id": "soguk-2",
-          "name": "Cold Brew",
-          "description": "16 saat demleme, düşük asidite, yoğun aroma.",
-          "price": "₺135",
-          "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80",
-          "link": "/product/soguk-2"
-        },
-        {
-          "id": "soguk-3",
-          "name": "Limonata",
-          "description": "Taze limon suyu, nane ve hafif şeker dengesi.",
-          "price": "₺115",
-          "image": "https://images.unsplash.com/photo-1523371054106-bbf80586c38c?auto=format&fit=crop&w=900&q=80",
-          "link": "/product/soguk-3"
-        }
-      ]
-    },
-    {
-      "id": "sicak",
-      "title": "Sıcak İçecek",
+      "id": "klasikler",
+      "title": "Klasikler",
       "icon": "cafe-outline",
       "products": [
         {
-          "id": "sicak-1",
-          "name": "Flat White",
-          "description": "Double ristretto ve ince mikroköpük süt.",
+          "id": "klasik-1",
+          "name": "Espresso (S)",
+          "description": "Klasik espresso.",
           "price": "₺130",
-          "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80",
-          "link": "/product/sicak-1"
+          "image": "/images/klasik-1.jpeg",
+          "link": "/product/klasik-1"
         },
         {
-          "id": "sicak-2",
-          "name": "Filtre Kahve",
-          "description": "Günlük öğütüm, dengeli gövde ve temiz bitiş.",
+          "id": "klasik-2",
+          "name": "Espresso (M)",
+          "description": "Klasik espresso.",
+          "price": "₺160",
+          "image": "/images/klasik-2.jpeg",
+          "link": "/product/klasik-2"
+        },
+        {
+          "id": "klasik-3",
+          "name": "Americano (S)",
+          "description": "Klasik americano.",
+          "price": "₺150",
+          "image": "/images/klasik-3.jpeg",
+          "link": "/product/klasik-3"
+        },
+        {
+          "id": "klasik-4",
+          "name": "Americano (M)",
+          "description": "Klasik americano.",
+          "price": "₺170",
+          "image": "/images/klasik-4.jpeg",
+          "link": "/product/klasik-4"
+        },
+        {
+          "id": "klasik-5",
+          "name": "Filtre Kahve (S)",
+          "description": "Klasik filtre kahve.",
+          "price": "₺140",
+          "image": "/images/klasik-5.jpeg",
+          "link": "/product/klasik-5"
+        },
+        {
+          "id": "klasik-6",
+          "name": "Filtre Kahve (M)",
+          "description": "Klasik filtre kahve.",
+          "price": "₺160",
+          "image": "/images/klasik-6.jpeg",
+          "link": "/product/klasik-6"
+        },
+        {
+          "id": "klasik-7",
+          "name": "Sutlo Filtre (S)",
+          "description": "Sutlu filtre kahve.",
+          "price": "₺150",
+          "image": "/images/klasik-7.jpeg",
+          "link": "/product/klasik-7"
+        },
+        {
+          "id": "klasik-8",
+          "name": "Sutlo Filtre (M)",
+          "description": "Sutlu filtre kahve.",
+          "price": "₺170",
+          "image": "/images/klasik-8.jpeg",
+          "link": "/product/klasik-8"
+        },
+        {
+          "id": "klasik-9",
+          "name": "Latte (S)",
+          "description": "Klasik latte.",
+          "price": "₺170",
+          "image": "/images/klasik-9.jpeg",
+          "link": "/product/klasik-9"
+        },
+        {
+          "id": "klasik-10",
+          "name": "Latte (M)",
+          "description": "Klasik latte.",
+          "price": "₺190",
+          "image": "/images/klasik-10.jpeg",
+          "link": "/product/klasik-10"
+        },
+        {
+          "id": "klasik-11",
+          "name": "Cappuccino (S)",
+          "description": "Klasik cappuccino.",
+          "price": "₺170",
+          "image": "/images/klasik-11.jpeg",
+          "link": "/product/klasik-11"
+        },
+        {
+          "id": "klasik-12",
+          "name": "Cappuccino (M)",
+          "description": "Klasik cappuccino.",
+          "price": "₺190",
+          "image": "/images/klasik-12.jpeg",
+          "link": "/product/klasik-12"
+        },
+        {
+          "id": "klasik-13",
+          "name": "Flat White (S)",
+          "description": "Klasik flat white.",
+          "price": "₺170",
+          "image": "/images/klasik-13.jpeg",
+          "link": "/product/klasik-13"
+        },
+        {
+          "id": "klasik-14",
+          "name": "Flat White (M)",
+          "description": "Klasik flat white.",
+          "price": "₺190",
+          "image": "/images/klasik-14.jpeg",
+          "link": "/product/klasik-14"
+        },
+        {
+          "id": "klasik-15",
+          "name": "Cortado",
+          "description": "Tek boy cortado.",
+          "price": "₺180",
+          "image": "/images/klasik-15.jpeg",
+          "link": "/product/klasik-15"
+        }
+      ]
+    },
+    {
+      "id": "specials",
+      "title": "Özel Tarif İçecekler",
+      "icon": "sparkles-outline",
+      "products": [
+        {
+          "id": "special-1",
+          "name": "Caramel Machiato (S)",
+          "description": "Special kahve.",
+          "price": "₺210",
+          "image": "/images/special-1.jpeg",
+          "link": "/product/special-1"
+        },
+        {
+          "id": "special-2",
+          "name": "Caramel Machiato (M)",
+          "description": "Special kahve.",
+          "price": "₺240",
+          "image": "/images/special-2.jpeg",
+          "link": "/product/special-2"
+        },
+        {
+          "id": "special-3",
+          "name": "Mocha (S)",
+          "description": "Special kahve.",
+          "price": "₺210",
+          "image": "/images/special-3.jpeg",
+          "link": "/product/special-3"
+        },
+        {
+          "id": "special-4",
+          "name": "Mocha (M)",
+          "description": "Special kahve.",
+          "price": "₺240",
+          "image": "/images/special-4.jpeg",
+          "link": "/product/special-4"
+        },
+        {
+          "id": "special-5",
+          "name": "White Mocha (S)",
+          "description": "Special kahve.",
+          "price": "₺210",
+          "image": "/images/special-5.jpeg",
+          "link": "/product/special-5"
+        },
+        {
+          "id": "special-6",
+          "name": "White Mocha (M)",
+          "description": "Special kahve.",
+          "price": "₺240",
+          "image": "/images/special-6.jpeg",
+          "link": "/product/special-6"
+        },
+        {
+          "id": "special-7",
+          "name": "Irish Mocha (S)",
+          "description": "Special kahve.",
+          "price": "₺210",
+          "image": "/images/special-7.jpeg",
+          "link": "/product/special-7"
+        },
+        {
+          "id": "special-8",
+          "name": "Irish Mocha (M)",
+          "description": "Special kahve.",
+          "price": "₺240",
+          "image": "/images/special-8.jpeg",
+          "link": "/product/special-8"
+        },
+        {
+          "id": "special-9",
+          "name": "Blueberry Mocha (S)",
+          "description": "Special kahve.",
+          "price": "₺210",
+          "image": "/images/special-9.jpeg",
+          "link": "/product/special-9"
+        },
+        {
+          "id": "special-10",
+          "name": "Blueberry Mocha (M)",
+          "description": "Special kahve.",
+          "price": "₺240",
+          "image": "/images/special-10.jpeg",
+          "link": "/product/special-10"
+        },
+        {
+          "id": "special-11",
+          "name": "Mint Mocha (S)",
+          "description": "Special kahve.",
+          "price": "₺210",
+          "image": "/images/special-11.jpeg",
+          "link": "/product/special-11"
+        },
+        {
+          "id": "special-12",
+          "name": "Mint Mocha (M)",
+          "description": "Special kahve.",
+          "price": "₺240",
+          "image": "/images/special-12.jpeg",
+          "link": "/product/special-12"
+        },
+        {
+          "id": "special-13",
+          "name": "Cookies Latte (S)",
+          "description": "Special kahve.",
+          "price": "₺210",
+          "image": "/images/special-13.jpeg",
+          "link": "/product/special-13"
+        },
+        {
+          "id": "special-14",
+          "name": "Cookies Latte (M)",
+          "description": "Special kahve.",
+          "price": "₺240",
+          "image": "/images/special-14.jpeg",
+          "link": "/product/special-14"
+        },
+        {
+          "id": "special-15",
+          "name": "Pumpkin Space Latte (S)",
+          "description": "Special kahve.",
+          "price": "₺210",
+          "image": "/images/special-15.jpeg",
+          "link": "/product/special-15"
+        },
+        {
+          "id": "special-16",
+          "name": "Pumpkin Space Latte (M)",
+          "description": "Special kahve.",
+          "price": "₺240",
+          "image": "/images/special-16.jpeg",
+          "link": "/product/special-16"
+        },
+        {
+          "id": "special-17",
+          "name": "Lotus Latte (S)",
+          "description": "Special kahve.",
+          "price": "₺210",
+          "image": "/images/special-17.jpeg",
+          "link": "/product/special-17"
+        },
+        {
+          "id": "special-18",
+          "name": "Lotus Latte (M)",
+          "description": "Special kahve.",
+          "price": "₺240",
+          "image": "/images/special-18.jpeg",
+          "link": "/product/special-18"
+        }
+      ]
+    },
+    {
+      "id": "ekstralar",
+      "title": "Ekstralar",
+      "icon": "add-circle-outline",
+      "products": [
+        {
+          "id": "ekstra-1",
+          "name": "Sos",
+          "description": "Ekstra sos.",
+          "price": "₺40",
+          "image": "/images/ekstra-1.jpeg",
+          "link": "/product/ekstra-1"
+        },
+        {
+          "id": "ekstra-2",
+          "name": "Surup",
+          "description": "Ekstra surup.",
+          "price": "₺40",
+          "image": "/images/ekstra-2.jpeg",
+          "link": "/product/ekstra-2"
+        },
+        {
+          "id": "ekstra-3",
+          "name": "Shot",
+          "description": "Ekstra shot.",
+          "price": "₺40",
+          "image": "/images/ekstra-3.jpeg",
+          "link": "/product/ekstra-3"
+        },
+        {
+          "id": "ekstra-4",
+          "name": "Sut",
+          "description": "Ekstra sut.",
+          "price": "₺40",
+          "image": "/images/ekstra-4.jpeg",
+          "link": "/product/ekstra-4"
+        },
+        {
+          "id": "ekstra-5",
+          "name": "Krema",
+          "description": "Ekstra krema.",
+          "price": "₺40",
+          "image": "/images/ekstra-5.jpeg",
+          "link": "/product/ekstra-5"
+        }
+      ]
+    },
+    {
+      "id": "iced-coffe",
+      "title": "Soğuk Kahve",
+      "icon": "snow-outline",
+      "products": [
+        {
+          "id": "iced-1",
+          "name": "Ice Americano",
+          "description": "Soguk kahve.",
+          "price": "₺170",
+          "image": "/images/iced-1.jpeg",
+          "link": "/product/iced-1"
+        },
+        {
+          "id": "iced-2",
+          "name": "Ice Filtre Kahve",
+          "description": "Soguk kahve.",
+          "price": "₺160",
+          "image": "/images/iced-2.jpeg",
+          "link": "/product/iced-2"
+        },
+        {
+          "id": "iced-3",
+          "name": "Ice Sutlo Filtre",
+          "description": "Soguk kahve.",
+          "price": "₺170",
+          "image": "/images/iced-3.jpeg",
+          "link": "/product/iced-3"
+        },
+        {
+          "id": "iced-4",
+          "name": "Ice Latte",
+          "description": "Soguk kahve.",
+          "price": "₺190",
+          "image": "/images/iced-4.jpeg",
+          "link": "/product/iced-4"
+        },
+        {
+          "id": "iced-5",
+          "name": "Ice Caramel Machiato",
+          "description": "Soguk special kahve.",
+          "price": "₺240",
+          "image": "/images/iced-5.jpeg",
+          "link": "/product/iced-5"
+        },
+        {
+          "id": "iced-6",
+          "name": "Ice Mocha",
+          "description": "Soguk special kahve.",
+          "price": "₺240",
+          "image": "/images/iced-6.jpeg",
+          "link": "/product/iced-6"
+        },
+        {
+          "id": "iced-7",
+          "name": "Ice White Mocha",
+          "description": "Soguk special kahve.",
+          "price": "₺240",
+          "image": "/images/iced-7.jpeg",
+          "link": "/product/iced-7"
+        },
+        {
+          "id": "iced-8",
+          "name": "Ice Irish Mocha",
+          "description": "Soguk special kahve.",
+          "price": "₺240",
+          "image": "/images/iced-8.jpeg",
+          "link": "/product/iced-8"
+        },
+        {
+          "id": "iced-9",
+          "name": "Ice Blueberry Mocha",
+          "description": "Soguk special kahve.",
+          "price": "₺240",
+          "image": "/images/iced-9.jpeg",
+          "link": "/product/iced-9"
+        },
+        {
+          "id": "iced-10",
+          "name": "Ice Mint Mocha",
+          "description": "Soguk special kahve.",
+          "price": "₺240",
+          "image": "/images/iced-10.jpeg",
+          "link": "/product/iced-10"
+        },
+        {
+          "id": "iced-11",
+          "name": "Ice Cookies Latte",
+          "description": "Soguk special kahve.",
+          "price": "₺240",
+          "image": "/images/iced-11.jpeg",
+          "link": "/product/iced-11"
+        },
+        {
+          "id": "iced-12",
+          "name": "Ice Pumpkin Space Latte",
+          "description": "Soguk special kahve.",
+          "price": "₺240",
+          "image": "/images/iced-12.jpeg",
+          "link": "/product/iced-12"
+        },
+        {
+          "id": "iced-13",
+          "name": "Ice Lotus Latte",
+          "description": "Soguk special kahve.",
+          "price": "₺240",
+          "image": "/images/iced-13.jpeg",
+          "link": "/product/iced-13"
+        }
+      ]
+    },
+    {
+      "id": "teas",
+      "title": "Çay",
+      "icon": "leaf-outline",
+      "products": [
+        {
+          "id": "tea-1",
+          "name": "Demleme Cay (S)",
+          "description": "Sicak cay.",
+          "price": "₺60",
+          "image": "/images/tea-1.jpeg",
+          "link": "/product/tea-1"
+        },
+        {
+          "id": "tea-2",
+          "name": "Demleme Cay (M)",
+          "description": "Sicak cay.",
+          "price": "₺80",
+          "image": "/images/tea-2.jpeg",
+          "link": "/product/tea-2"
+        },
+        {
+          "id": "tea-3",
+          "name": "Melisa Cayi",
+          "description": "Bitki cayi.",
           "price": "₺110",
-          "image": "https://images.unsplash.com/photo-1494314671902-399b18174975?auto=format&fit=crop&w=900&q=80",
-          "link": "/product/sicak-2"
+          "image": "/images/tea-3.jpeg",
+          "link": "/product/tea-3"
         },
         {
-          "id": "sicak-3",
-          "name": "Bitki Çayı",
-          "description": "Ihlamur, papatya ve melisa karışımı.",
-          "price": "₺105",
-          "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80",
-          "link": "/product/sicak-3"
+          "id": "tea-4",
+          "name": "Yesil Cay",
+          "description": "Bitki cayi.",
+          "price": "₺110",
+          "image": "/images/tea-4.jpeg",
+          "link": "/product/tea-4"
+        },
+        {
+          "id": "tea-5",
+          "name": "Papatya Cayi",
+          "description": "Bitki cayi.",
+          "price": "₺110",
+          "image": "/images/tea-5.jpeg",
+          "link": "/product/tea-5"
+        },
+        {
+          "id": "tea-6",
+          "name": "Early Grey Cay",
+          "description": "Bitki cayi.",
+          "price": "₺110",
+          "image": "/images/tea-6.jpeg",
+          "link": "/product/tea-6"
+        },
+        {
+          "id": "tea-7",
+          "name": "Ada Cayi",
+          "description": "Bitki cayi.",
+          "price": "₺110",
+          "image": "/images/tea-7.jpeg",
+          "link": "/product/tea-7"
+        },
+        {
+          "id": "tea-8",
+          "name": "Kis Cayi",
+          "description": "Bitki cayi.",
+          "price": "₺110",
+          "image": "/images/tea-8.jpeg",
+          "link": "/product/tea-8"
+        },
+        {
+          "id": "tea-9",
+          "name": "Ihlamur",
+          "description": "Bitki cayi.",
+          "price": "₺110",
+          "image": "/images/tea-9.jpeg",
+          "link": "/product/tea-9"
+        },
+        {
+          "id": "tea-10",
+          "name": "Kusburnu",
+          "description": "Bitki cayi.",
+          "price": "₺110",
+          "image": "/images/tea-10.jpeg",
+          "link": "/product/tea-10"
+        },
+        {
+          "id": "tea-11",
+          "name": "Hibiskus Cayi",
+          "description": "Bitki cayi.",
+          "price": "₺110",
+          "image": "/images/tea-11.jpeg",
+          "link": "/product/tea-11"
+        },
+        {
+          "id": "tea-12",
+          "name": "Nane Limon",
+          "description": "Bitki cayi.",
+          "price": "₺110",
+          "image": "/images/tea-12.jpeg",
+          "link": "/product/tea-12"
+        },
+        {
+          "id": "tea-13",
+          "name": "Yasemin Cayi",
+          "description": "Bitki cayi.",
+          "price": "₺110",
+          "image": "/images/tea-13.jpeg",
+          "link": "/product/tea-13"
+        }
+      ]
+    },
+    {
+      "id": "geleneksel",
+      "title": "Geleneksel",
+      "icon": "flame-outline",
+      "products": [
+        {
+          "id": "geleneksel-1",
+          "name": "Turk Kahvesi (Single)",
+          "description": "Geleneksel kahve.",
+          "price": "₺120",
+          "image": "/images/geleneksel-1.jpeg",
+          "link": "/product/geleneksel-1"
+        },
+        {
+          "id": "geleneksel-2",
+          "name": "Turk Kahvesi (Double)",
+          "description": "Geleneksel kahve.",
+          "price": "₺150",
+          "image": "/images/geleneksel-2.jpeg",
+          "link": "/product/geleneksel-2"
+        },
+        {
+          "id": "geleneksel-3",
+          "name": "Damla Sakizli (Single)",
+          "description": "Geleneksel kahve.",
+          "price": "₺130",
+          "image": "/images/geleneksel-3.jpeg",
+          "link": "/product/geleneksel-3"
+        },
+        {
+          "id": "geleneksel-4",
+          "name": "Damla Sakizli (Double)",
+          "description": "Geleneksel kahve.",
+          "price": "₺160",
+          "image": "/images/geleneksel-4.jpeg",
+          "link": "/product/geleneksel-4"
+        },
+        {
+          "id": "geleneksel-5",
+          "name": "Dibek Kahvesi (Single)",
+          "description": "Geleneksel kahve.",
+          "price": "₺130",
+          "image": "/images/geleneksel-5.jpeg",
+          "link": "/product/geleneksel-5"
+        },
+        {
+          "id": "geleneksel-6",
+          "name": "Dibek Kahvesi (Double)",
+          "description": "Geleneksel kahve.",
+          "price": "₺160",
+          "image": "/images/geleneksel-6.jpeg",
+          "link": "/product/geleneksel-6"
+        },
+        {
+          "id": "geleneksel-7",
+          "name": "Menengic (Single)",
+          "description": "Geleneksel kahve.",
+          "price": "₺130",
+          "image": "/images/geleneksel-7.jpeg",
+          "link": "/product/geleneksel-7"
+        },
+        {
+          "id": "geleneksel-8",
+          "name": "Menengic (Double)",
+          "description": "Geleneksel kahve.",
+          "price": "₺160",
+          "image": "/images/geleneksel-8.jpeg",
+          "link": "/product/geleneksel-8"
         }
       ]
     }

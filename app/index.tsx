@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Href, useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { Image, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
+import { Image, ImageStyle, Platform, Pressable, ScrollView, StyleProp, StyleSheet, Text, TextInput, useWindowDimensions, View } from 'react-native';
 
 type Category = {
   id: string;
@@ -23,7 +23,40 @@ const menuData = require('../data/menu.json') as {
   categories: Category[];
 };
 
-const infoNote = 'Hafta içi 12:00-14:00 saatlerinde kahve yanında mini tatlı ikramımız var.';
+const WEB_IMAGE_ORIGIN = 'https://restorandikmencoffeehouse.pages.dev';
+const FALLBACK_IMAGE = `${WEB_IMAGE_ORIGIN}/images/yiyecek-1.jpeg`;
+
+function resolveImageUri(image: string) {
+  if (!image) return FALLBACK_IMAGE;
+  if (/^https?:\/\//i.test(image)) return image;
+  if (Platform.OS === 'web') return image;
+  return `${WEB_IMAGE_ORIGIN}${image.startsWith('/') ? image : `/${image}`}`;
+}
+
+function ProductImage({ image, style }: { image: string; style: StyleProp<ImageStyle> }) {
+  const [failed, setFailed] = useState(false);
+  const uri = failed ? FALLBACK_IMAGE : resolveImageUri(image);
+  return <Image source={{ uri }} style={style} onError={() => setFailed(true)} />;
+}
+
+// Wrapper component for Ionicons to fix rendering issues on certain devices
+function IconButton({
+  name,
+  size,
+  color,
+  ...props
+}: React.ComponentProps<typeof Ionicons>) {
+  return (
+    <View style={styles.iconWrapper}>
+      <Ionicons
+        name={name}
+        size={size}
+        color={color}
+        {...props}
+      />
+    </View>
+  );
+}
 
 export default function CoffeeHouseScreen() {
   const { width, height } = useWindowDimensions();
@@ -31,6 +64,7 @@ export default function CoffeeHouseScreen() {
   const router = useRouter();
 
   const [searchQuery, setSearchQuery] = useState('');
+  const [lastCategoryClicked, setLastCategoryClicked] = useState('');
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>(
     () =>
       menuData.categories.reduce(
@@ -76,12 +110,13 @@ export default function CoffeeHouseScreen() {
 
           <View style={styles.searchRow}>
             <View style={styles.searchWrap}>
-              <Ionicons name="search-outline" size={18} color="#5f6770" />
+              <IconButton name="search-outline" size={18} color="#5f6770" />
               <TextInput
                 value={searchQuery}
                 onChangeText={setSearchQuery}
                 placeholder="Ürün veya içerik ara"
                 placeholderTextColor="#7d8791"
+                allowFontScaling={false}
                 style={styles.searchInput}
               />
             </View>
@@ -94,10 +129,18 @@ export default function CoffeeHouseScreen() {
                   key={category.id}
                   style={styles.categoryChip}
                   onPress={() => {
-                    setExpandedSections((prev) => ({ ...prev, [category.id]: true }));
-                    setSearchQuery(category.title);
+                    if (lastCategoryClicked === category.id) {
+                      // If the same category is clicked again, reset search
+                      setSearchQuery('');
+                      setLastCategoryClicked('');
+                    } else {
+                      // New category clicked
+                      setExpandedSections((prev) => ({ ...prev, [category.id]: true }));
+                      setSearchQuery(category.title);
+                      setLastCategoryClicked(category.id);
+                    }
                   }}>
-                  <Ionicons name={category.icon} size={16} color="#0f646c" />
+                  <IconButton name={category.icon} size={16} color="#0f646c" />
                   <Text style={styles.categoryChipText}>{category.title}</Text>
                 </Pressable>
               ))}
@@ -109,10 +152,18 @@ export default function CoffeeHouseScreen() {
                   key={category.id}
                   style={styles.categoryChip}
                   onPress={() => {
-                    setExpandedSections((prev) => ({ ...prev, [category.id]: true }));
-                    setSearchQuery(category.title);
+                    if (lastCategoryClicked === category.id) {
+                      // If the same category is clicked again, reset search
+                      setSearchQuery('');
+                      setLastCategoryClicked('');
+                    } else {
+                      // New category clicked
+                      setExpandedSections((prev) => ({ ...prev, [category.id]: true }));
+                      setSearchQuery(category.title);
+                      setLastCategoryClicked(category.id);
+                    }
                   }}>
-                  <Ionicons name={category.icon} size={16} color="#0f646c" />
+                  <IconButton name={category.icon} size={16} color="#0f646c" />
                   <Text style={styles.categoryChipText}>{category.title}</Text>
                 </Pressable>
               ))}
@@ -126,7 +177,7 @@ export default function CoffeeHouseScreen() {
                   key={product.id}
                   style={[styles.productCard, styles.productCardDesktopWeb]}
                   onPress={() => router.push(product.link as Href)}>
-                  <Image source={{ uri: product.image }} style={styles.productImage} />
+                  <ProductImage image={product.image} style={styles.productImage} />
                   <Text style={styles.productName} numberOfLines={1}>
                     {product.name}
                   </Text>
@@ -138,7 +189,7 @@ export default function CoffeeHouseScreen() {
             <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.productsRow}>
               {featuredProducts.map((product) => (
                 <Pressable key={product.id} style={styles.productCard} onPress={() => router.push(product.link as Href)}>
-                  <Image source={{ uri: product.image }} style={styles.productImage} />
+                  <ProductImage image={product.image} style={styles.productImage} />
                   <Text style={styles.productName} numberOfLines={1}>
                     {product.name}
                   </Text>
@@ -155,11 +206,6 @@ export default function CoffeeHouseScreen() {
             </View>
           )}
 
-          <View style={styles.infoCard}>
-            <Text style={styles.infoTitle}>Öğlen Menüsü</Text>
-            <Text style={styles.infoText}>{infoNote}</Text>
-          </View>
-
           {filteredCategories.map((category) => {
             const isExpanded = !!expandedSections[category.id];
 
@@ -167,7 +213,7 @@ export default function CoffeeHouseScreen() {
               <View key={category.id} style={styles.menuSection}>
                 <Pressable style={styles.menuSectionHeader} onPress={() => toggleSection(category.id)}>
                   <Text style={styles.menuSectionTitle}>{category.title}</Text>
-                  <Ionicons name={isExpanded ? 'chevron-up' : 'chevron-down'} size={20} color="#0f646c" />
+                  <IconButton name={isExpanded ? 'chevron-up' : 'chevron-down'} size={20} color="#0f646c" />
                 </Pressable>
 
                 {isExpanded &&
@@ -193,11 +239,11 @@ export default function CoffeeHouseScreen() {
         {!isDesktopWeb && (
           <View style={styles.bottomNav}>
             <Pressable style={styles.bottomItem} onPress={() => router.push('/')}>
-              <Ionicons name="reader" size={20} color="#0f646c" />
+              <IconButton name="reader" size={20} color="#0f646c" />
               <Text style={styles.bottomItemText}>Menü</Text>
             </Pressable>
             <Pressable style={styles.bottomItem} onPress={() => router.push('/contact')}>
-              <Ionicons name="call" size={20} color="#0f646c" />
+              <IconButton name="call" size={20} color="#0f646c" />
               <Text style={styles.bottomItemText}>İletişim</Text>
             </Pressable>
           </View>
@@ -208,6 +254,12 @@ export default function CoffeeHouseScreen() {
 }
 
 const styles = StyleSheet.create({
+  iconWrapper: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 24,
+    height: 24,
+  },
   page: {
     flex: 1,
     backgroundColor: '#1f4f53',

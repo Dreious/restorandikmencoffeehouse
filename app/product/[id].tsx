@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
 
 type Product = {
   id: string;
@@ -22,9 +23,20 @@ const menuData = require('../../data/menu.json') as {
   categories: Category[];
 };
 
+const WEB_IMAGE_ORIGIN = 'https://restorandikmencoffeehouse.pages.dev';
+const FALLBACK_IMAGE = `${WEB_IMAGE_ORIGIN}/images/yiyecek-1.jpeg`;
+
+function resolveImageUri(image: string) {
+  if (!image) return FALLBACK_IMAGE;
+  if (/^https?:\/\//i.test(image)) return image;
+  if (Platform.OS === 'web') return image;
+  return `${WEB_IMAGE_ORIGIN}${image.startsWith('/') ? image : `/${image}`}`;
+}
+
 export default function ProductDetailScreen() {
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
+  const [imageFailed, setImageFailed] = useState(false);
 
   const allProducts = menuData.categories.flatMap((category) => category.products);
   const product = allProducts.find((item) => item.id === id);
@@ -61,7 +73,11 @@ export default function ProductDetailScreen() {
       </View>
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        <Image source={{ uri: product.image }} style={styles.image} />
+        <Image
+          source={{ uri: imageFailed ? FALLBACK_IMAGE : resolveImageUri(product.image) }}
+          style={styles.image}
+          onError={() => setImageFailed(true)}
+        />
 
         <View style={styles.infoCard}>
           <Text style={styles.categoryText}>{category?.title}</Text>
