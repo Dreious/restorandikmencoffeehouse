@@ -1,6 +1,6 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Image, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type Product = {
   id: string;
@@ -36,10 +36,26 @@ export default function ProductDetailScreen() {
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
   const [imageFailed, setImageFailed] = useState(false);
+  const [imageAspectRatio, setImageAspectRatio] = useState(16 / 9);
 
   const allProducts = menuData.categories.flatMap((category) => category.products);
   const product = allProducts.find((item) => item.id === id);
   const category = menuData.categories.find((item) => item.products.some((p) => p.id === id));
+
+  useEffect(() => {
+    if (!product) return;
+
+    const uri = resolveImageUri(imageFailed ? FALLBACK_IMAGE : product.image);
+    Image.getSize(
+      uri,
+      (width, height) => {
+        if (width > 0 && height > 0) {
+          setImageAspectRatio(width / height);
+        }
+      },
+      () => setImageAspectRatio(16 / 9)
+    );
+  }, [product, imageFailed]);
 
   if (!product) {
     return (
@@ -72,18 +88,19 @@ export default function ProductDetailScreen() {
       </View>
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        <Image
-          source={{ uri: imageFailed ? FALLBACK_IMAGE : resolveImageUri(product.image) }}
-          style={styles.image}
-          onError={() => setImageFailed(true)}
-        />
+        <View style={styles.imageWrap}>
+          <Image
+            source={{ uri: imageFailed ? FALLBACK_IMAGE : resolveImageUri(product.image) }}
+            style={[styles.image, { aspectRatio: imageAspectRatio }]}
+            resizeMode="contain"
+            onError={() => setImageFailed(true)}
+          />
+        </View>
 
         <View style={styles.infoCard}>
           <Text style={styles.categoryText}>{category?.title}</Text>
           <Text style={styles.name}>{product.name}</Text>
           <Text style={styles.price}>{product.price}</Text>
-          <Text style={styles.sectionTitle}>İçerik</Text>
-          <Text style={styles.description}>{product.description}</Text>
         </View>
       </ScrollView>
     </View>
@@ -97,7 +114,7 @@ const styles = StyleSheet.create({
   },
   header: {
     height: 62,
-    backgroundColor: '#0f646c',
+    backgroundColor: '#0a5ccf',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -124,9 +141,18 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
   },
+  imageWrap: {
+    width: '100%',
+    backgroundColor: '#ffffff',
+    paddingHorizontal: 12,
+    paddingVertical: 12,
+    alignItems: 'center',
+  },
   image: {
     width: '100%',
-    height: 280,
+    maxWidth: 980,
+    maxHeight: 560,
+    borderRadius: 12,
   },
   infoCard: {
     margin: 16,
@@ -152,18 +178,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: '800',
     marginTop: 8,
-    marginBottom: 14,
-  },
-  sectionTitle: {
-    color: '#0b3840',
-    fontSize: 16,
-    fontWeight: '700',
-    marginBottom: 6,
-  },
-  description: {
-    color: '#30585e',
-    fontSize: 15,
-    lineHeight: 22,
+    marginBottom: 2,
   },
   notFoundWrap: {
     flex: 1,

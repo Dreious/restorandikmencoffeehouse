@@ -18,12 +18,24 @@ type Product = {
   link: string;
 };
 
+type MenuListItem = {
+  key: string;
+  name: string;
+  link: string;
+  price?: string;
+  sizePrices?: {
+    s?: string;
+    m?: string;
+  };
+};
+
 const menuData = require('../data/menu.json') as {
   categories: Category[];
 };
 
 const WEB_IMAGE_ORIGIN = 'https://restorandikmencoffeehouse.pages.dev';
 const FALLBACK_IMAGE = `${WEB_IMAGE_ORIGIN}/images/yiyecek-1.jpeg`;
+const HEADER_LOGO = require('../assets/images/coffee-house-logo.png');
 
 function resolveImageUri(image: string) {
   if (!image) return FALLBACK_IMAGE;
@@ -61,6 +73,74 @@ function IconButton({ name, size = 16, color = '#0f646c' }: { name: string; size
       <Text style={[styles.iconText, { fontSize: size, color }]}>{resolveIcon(name)}</Text>
     </View>
   );
+}
+
+function parseSizeName(name: string) {
+  const match = name.match(/^(.*)\((s|m)\)\s*$/i);
+  if (!match) return null;
+  return {
+    baseName: match[1].trim(),
+    size: match[2].toLowerCase() as 's' | 'm',
+  };
+}
+
+function buildMenuListItems(products: Product[]): MenuListItem[] {
+  const groupedByBase = new Map<string, { s?: Product; m?: Product; baseName: string }>();
+
+  for (const product of products) {
+    const parsed = parseSizeName(product.name);
+    if (!parsed) continue;
+    const key = parsed.baseName.toLocaleLowerCase('tr');
+    const existing = groupedByBase.get(key) ?? { baseName: parsed.baseName };
+    existing[parsed.size] = product;
+    groupedByBase.set(key, existing);
+  }
+
+  const result: MenuListItem[] = [];
+  const used = new Set<string>();
+
+  for (const product of products) {
+    if (used.has(product.id)) continue;
+
+    const parsed = parseSizeName(product.name);
+    if (!parsed) {
+      result.push({
+        key: product.id,
+        name: product.name,
+        link: product.link,
+        price: product.price,
+      });
+      used.add(product.id);
+      continue;
+    }
+
+    const key = parsed.baseName.toLocaleLowerCase('tr');
+    const group = groupedByBase.get(key);
+    if (group?.s && group?.m) {
+      result.push({
+        key: `${group.s.id}-${group.m.id}`,
+        name: group.baseName,
+        link: group.s.link,
+        sizePrices: {
+          s: group.s.price,
+          m: group.m.price,
+        },
+      });
+      used.add(group.s.id);
+      used.add(group.m.id);
+      continue;
+    }
+
+    result.push({
+      key: product.id,
+      name: product.name,
+      link: product.link,
+      price: product.price,
+    });
+    used.add(product.id);
+  }
+
+  return result;
 }
 
 export default function CoffeeHouseScreen() {
@@ -110,6 +190,7 @@ export default function CoffeeHouseScreen() {
     <View style={[styles.page, isDesktopWeb && styles.pageDesktopWeb, isDesktopWeb && { width, minHeight: height }]}>
       <View style={[styles.deviceFrame, isDesktopWeb && styles.deviceFrameDesktopWeb, isDesktopWeb && { width }]}>
         <ScrollView style={styles.scrollArea} showsVerticalScrollIndicator={false}>
+          <Image source={HEADER_LOGO} style={styles.headerLogo} resizeMode="contain" />
           <Text style={styles.heading}>Coffee House</Text>
           <Text style={styles.subHeading}>QR Menü</Text>
 
@@ -222,16 +303,22 @@ export default function CoffeeHouseScreen() {
                 </Pressable>
 
                 {isExpanded &&
-                  category.products.map((product) => (
+                  buildMenuListItems(category.products).map((item) => (
                     <Pressable
-                      key={product.id}
+                      key={item.key}
                       style={styles.menuItemRow}
-                      onPress={() => router.push(product.link as Href)}>
+                      onPress={() => router.push(item.link as Href)}>
                       <View style={styles.menuItemInfo}>
-                        <Text style={styles.menuItemName}>{product.name}</Text>
-                        <Text style={styles.menuItemDesc}>{product.description}</Text>
+                        <Text style={styles.menuItemName}>{item.name}</Text>
                       </View>
-                      <Text style={styles.menuItemPrice}>{product.price}</Text>
+                      {item.sizePrices ? (
+                        <View style={styles.menuItemSizePriceWrap}>
+                          <Text style={styles.menuItemSizePriceText}>{`S  ${item.sizePrices.s}`}</Text>
+                          <Text style={styles.menuItemSizePriceText}>{`M  ${item.sizePrices.m}`}</Text>
+                        </View>
+                      ) : (
+                        <Text style={styles.menuItemPrice}>{item.price}</Text>
+                      )}
                     </Pressable>
                   ))}
               </View>
@@ -258,7 +345,7 @@ const styles = StyleSheet.create({
   },
   page: {
     flex: 1,
-    backgroundColor: '#1f4f53',
+    backgroundColor: '#0a5ccf',
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 16,
@@ -275,7 +362,7 @@ const styles = StyleSheet.create({
     width: '100%',
     maxWidth: 430,
     flex: 1,
-    backgroundColor: '#f8feff',
+    backgroundColor: '#0a5ccf',
     borderRadius: 16,
     overflow: 'hidden',
   },
@@ -290,16 +377,22 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 20,
   },
+  headerLogo: {
+    alignSelf: 'center',
+    width: 120,
+    height: 120,
+    marginBottom: 8,
+  },
   heading: {
     textAlign: 'center',
-    color: '#0b3840',
+    color: '#ffffff',
     fontSize: 30,
     fontWeight: '800',
     letterSpacing: 0.4,
   },
   subHeading: {
     textAlign: 'center',
-    color: '#0f646c',
+    color: '#ffffff',
     fontSize: 14,
     marginTop: 4,
     marginBottom: 20,
@@ -471,15 +564,21 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '700',
   },
-  menuItemDesc: {
-    color: '#4c666a',
-    fontSize: 13,
-    lineHeight: 18,
-  },
   menuItemPrice: {
     color: '#0f646c',
     fontSize: 16,
     fontWeight: '800',
     paddingTop: 2,
+  },
+  menuItemSizePriceWrap: {
+    alignItems: 'flex-end',
+    gap: 2,
+    paddingTop: 2,
+    minWidth: 86,
+  },
+  menuItemSizePriceText: {
+    color: '#0f646c',
+    fontSize: 16,
+    fontWeight: '800',
   },
 });
